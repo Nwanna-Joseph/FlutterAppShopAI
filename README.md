@@ -248,16 +248,64 @@ lib/
 ---
 ### Build APK:
 ```
-flutter build apk --release --target=lib\presentation\screen\main.dart
+flutter build apk --release --target=lib/main.dart
 ```
 
 ### Run Debug
 ```
-flutter run --target=lib\presentation\screen\main.dart
+flutter run --target=lib/main.dart
 ```
 
 ### Run Test
 ```
-flutter test test/task_repository_tests/mock_flutter_secure_storage.dart
+flutter test test/unit_tests/cart_repository_tests.dart
 ```
+---
+
+## 🔧 Areas for Potential Improvement
+
+Although the app is functional and follows a clean architecture, here are a few areas that can be enhanced in future iterations:
+
+### ✅ 1. Full Server Integration
+- Replace the mock API (`reqres.in`) with a real backend (e.g., Firebase, Supabase, Node/Express).
+- Add authentication to allow personalized cart per user.
+
+### ✅ 2. Background Sync Enhancements
+- Use platform-native background services (WorkManager on Android, BGTaskScheduler on iOS) for more reliable syncing.
+- Handle sync conflicts at batch or field level instead of entire object overwrite.
+
+### ✅ 3. UI Improvements
+- Add user-friendly error and loading states.
+- Include badges or indicators for cart quantity in AppBar.
+- Enable light/dark theme toggling.
+
+### ✅ 4. Sync Optimization
+- Batch upload cart items to the server instead of one-by-one.
+- Introduce versioning or ETags to reduce unnecessary syncs.
+
+### ✅ 5. State Management Abstraction
+- Create base state classes and loading indicators to avoid duplication across states like `CartState` and `ProductState`.
+
+### ✅ 6. Testing Coverage
+- Add widget/integration tests using `flutter_test` and `mockito`.
+- Run automated tests in CI/CD pipeline.
+
+### ✅ 7. Error Tracking and Analytics
+- Integrate tools like Sentry, Firebase Crashlytics, or LogRocket for tracking bugs and sync issues.
+
+### ✅ 8. Accessibility & Performance
+- Improve accessibility with semantic labels and contrast.
+- Cache network images and optimize `ListView.builder`.
+
+### ✅ 9. Offline Product Catalog
+- Persist product catalog locally to make it fully usable offline.
+- Add a "last updated" timestamp or sync status for products.
+
+### ✅ 10. Expand Sync Conflict Resolution
+- Handle more complex scenarios where both cart and product data may be edited offline.
+- Provide a UI for the user to manually resolve conflicts (e.g., choose version to keep).
+
+---
+
+
 
